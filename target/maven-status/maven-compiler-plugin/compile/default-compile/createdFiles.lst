@@ -1,1 +1,9 @@
+Mappings\MappingNames.class
+config\WebConfig.class
+web\SpittleController.class
+test\krunoslav\Spittle.class
+web\HomeController.class
+config\RootConfig.class
+Views\ViewNames.class
 config\SpittrWebAppInitializer.class
+data\SpittleRepository.class
