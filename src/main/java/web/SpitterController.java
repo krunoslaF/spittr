@@ -1,18 +1,18 @@
 package web;
 
+import javax.validation.Valid;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.validation.Errors;
 import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.RequestParam;
 
 import Mappings.MappingNames;
 import Views.ViewNames;
 import data.Spitter;
-import data.SpitterRepository;
 import data.SpitterRepositoryImpl;
 
 @Controller
@@ -42,7 +42,12 @@ public class SpitterController {
 	}
 
 	@RequestMapping(value=MappingNames.REGISTER, method=RequestMethod.POST)
-	public String processRegistration(Spitter spitter) {
+	public String processRegistration(@Valid Spitter spitter, Errors errors) {
+		
+		if (errors.hasErrors()) {
+			return ViewNames.REGISTER;
+		}
+		
 		spitterRepository.save(spitter);
 		return "redirect:" + ViewNames.SPITTER + "/" + spitter.getUsername();
 	}

@@ -1,5 +1,8 @@
 package data;
 
+import javax.validation.constraints.NotNull;
+import javax.validation.constraints.Size;
+
 import org.apache.commons.lang3.builder.EqualsBuilder;
 import org.apache.commons.lang3.builder.HashCodeBuilder;
 
@@ -12,9 +15,21 @@ import lombok.Setter;
 public class Spitter {
 
 	private Long id;
+	
+	@NotNull
+	@Size(min=2, max=30)
 	private String firstName;
+	
+	@NotNull
+	@Size(min=2, max=30)
 	private String lastName;
+	
+	@NotNull
+	@Size(min=2, max=30)
 	private String username;
+	
+	@NotNull
+	@Size(min=2, max=30)
 	private String password;
 
 	public Spitter(String firstName, String lastName, String username, String password) {
