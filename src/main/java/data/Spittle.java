@@ -1,4 +1,4 @@
-package test.krunoslav;
+package data;
 import java.util.Date;
 
 import lombok.Getter;
