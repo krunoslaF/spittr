@@ -1,7 +1,11 @@
 package data;
 
+import org.apache.commons.lang3.builder.EqualsBuilder;
+import org.apache.commons.lang3.builder.HashCodeBuilder;
+
 import lombok.Getter;
 import lombok.Setter;
+
 
 @Getter
 @Setter
@@ -34,7 +38,15 @@ public class Spitter {
 		this.username = null;
 		this.password = null;
 	}
-	
-	
+
+	@Override
+	public boolean equals(Object that) {
+		return EqualsBuilder.reflectionEquals(this, that, "id", "time");
+	}
+
+	@Override
+	public int hashCode() {
+		return HashCodeBuilder.reflectionHashCode(this, "id", "time");
+	}
 
 }
